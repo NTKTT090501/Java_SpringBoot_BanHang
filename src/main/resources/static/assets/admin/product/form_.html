@@ -1,0 +1,67 @@
+<div class="row my-2">
+    <div class="col-sm-4">
+
+        <div class="card" for="image">
+
+            <img ng-src="/assets/pages/img/products/{{form.image}}" style="height: 300px;" class="mx-1 my-1">
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-8">
+        <form class="row g-3">
+
+            <div class="col-md-6 ">
+                <label for="inputPassword4" class="form-label">Tên loại hàng</label>
+                <select class="form-select" ng-model="form.category.id" aria-label="Default select example">
+                    
+                    <option ng-repeat="c in cates" ng-value="c.id" ng-model="form.category.name">{{c.name}}</option>
+                    
+                    
+                  </select>
+            </div>
+            <div class="col-md-12">
+                <hr class="">
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Tên Sản Phẩm</label>
+                <input type="text" ng-model="form.name" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Giá</label>
+                <input type="number" ng-model="form.price" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress" class="form-label">Hình</label>
+                <input type="file" class="form-control" onchange="angular.element(this).scope().imageChanged(this.files)" id="image">
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress2" class="form-label">Ngày Thêm</label>
+                <input type="date" ng-model="form.createDate" class="form-control" id="inputAddress2">
+            </div>
+            <div class="col-md-6 " style="margin-top: 50px;">
+                <label for="inputCity" class="form-label" style="margin-right: 20px;">Trạng Thái: </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" ng-model="form.available" ng-value="true" name="available">
+                    <label class="form-check-label">Còn Hàng</label>
+
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" ng-model="form.available" ng-value="false" name="available">
+                    <label class="form-check-label" for="flexRadioDefault2">Hết Hàng</label>
+                </div>
+            </div>
+
+
+            <div class="col-12">
+                <button ng-click="create()" class="btn btn-primary">Thêm</button>
+                <button ng-click="delete(form.id)" class="btn btn-primary">Xóa</button>
+                <button ng-click="update()" class="btn btn-primary">Sửa</button>
+                <button ng-click="reset()" class="btn btn-primary">Làm mới</button>
+            </div>
+        </form>
+    </div>
+
+</div>

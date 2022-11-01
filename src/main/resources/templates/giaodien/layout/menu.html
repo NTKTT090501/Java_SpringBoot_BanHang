@@ -1,0 +1,138 @@
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+
+                    <!-- END CURRENCIES -->
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="javascript:void(0);" class="current">Language</a>
+                        <div class="langs-block-others-wrapper">
+                            <div class="langs-block-others">
+                                <a href="javascript:void(0);">English</a>
+                                <a href="javascript:void(0);">Tiáº¿ng Viá»‡t</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+
+
+
+                    <th:block th:if="${#request.remoteUser}">
+                        <li><a th:href="@{/security/logoff}">Sign Out</a></li>
+                        <li><a th:href="shop-account.html">My Account</a></li>
+                        <li><a th:href="shop-account.html">Welcome [[${#request.remoteUser}]]</a></li>
+                        <h1></h1>
+                    </th:block>
+                    <th:block th:unless="${#request.remoteUser}">
+                        <li><a th:href="@{/security/login}">Sign In</a></li>
+                    </th:block>
+
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>
+</div>
+<div class="header">
+    <div class="container">
+        <a class="site-logo" href="shop-index.html"><img th:src="@{/assets/corporate/img/logos/logo-shop-red.png}" alt="Metronic Shop UI"></a>
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN CART -->
+        <div class="top-cart-block">
+            <div class="top-cart-info">
+                <a href="" class="top-cart-info-count">{{cart.count}} items</a>
+                <a href="" class="top-cart-info-value">${{cart.amount | number : 2}}</a>
+            </div>
+            <i class="fa fa-shopping-cart"></i>
+
+            <div class="top-cart-content-wrapper">
+                <div class="top-cart-content">
+                    <ul class="scroller" style="height: 250px;">
+                        <!-- <li>
+                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <span class="cart-content-count">x 1</span>
+                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+                            <em>$1230</em>
+                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+                        </li>
+                        <li>
+                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <span class="cart-content-count">x 1</span>
+                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+                            <em>$1230</em>
+                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+                        </li>
+                        <li>
+                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <span class="cart-content-count">x 1</span>
+                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+                            <em>$1230</em>
+                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+                        </li> -->
+
+                    </ul>
+                    <div class="text-right">
+                        <a th:href="@{/index.com/cart}" class="btn btn-default">View Cart</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END CART -->
+
+        <!-- BEGIN NAVIGATION -->
+        <div class="header-navigation">
+            <ul>
+                <li class="dropdown">
+                    <a class="dropdown" th:href="@{/index.com}">Home </a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown" th:href="@{/index.com/product/list}">Sản Phẩm</a>
+                </li>
+                <li><a th:href="@{/order/list}">Đơn Hàng</a></li>
+                <li class="dropdown">
+                    <a class="dropdown" th:href="@{/index.com/cart}">Giỏ Hàng</a>
+                </li>
+                <th:block th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
+                    <li class="dropdown">
+                        <a class="dropdown" th:href="@{/admin/home/index}">Quản Trị</a>
+                    </li>
+
+                </th:block>
+
+
+
+
+
+
+                <li class="menu-search">
+                    <span class="sep"></span>
+                    <i class="fa fa-search search-btn"></i>
+                    <div class="search-box">
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search" class="form-control">
+                                <span class="input-group-btn">
+                                     <button class="btn btn-primary" type="submit">TÃ¬m</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <!-- END TOP SEARCH -->
+            </ul>
+        </div>
+        <!-- END NAVIGATION -->
+    </div>
+</div>

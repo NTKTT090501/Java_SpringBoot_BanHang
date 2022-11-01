@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/giaodien/layout/layout :: dynamic(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+
+            <!-- BEGIN SIDEBAR & CONTENT -->
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <h1>My Order</h1>
+                    <!-- BEGIN CHECKOUT PAGE -->
+                    <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+
+                        <!-- BEGIN CHECKOUT -->
+
+                        <!-- END PAYMENT ADDRESS -->
+
+                        <!-- BEGIN SHIPPING ADDRESS -->
+                        <div id="shipping-address" class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <a class="accordion-toggle">
+                                        YOUR ORDERS LIST PURCHASED
+                                    </a>
+                                </h2>
+                            </div>
+                            <div id="shipping-address-content">
+                                <div class="panel-body row">
+
+
+                                    <div class="col-md-12 ">
+                                        <div class="">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr style="font-size: 100px;">
+                                                        <th scope="col">No.</th>
+                                                        <th scope="col">Order No.</th>
+                                                        <th scope="col">Order Date</th>
+                                                        <th scope="col">Shipping</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="font-size: 15px;" th:each=" order, state: ${orders}">
+                                                        <th scope="row">[[${state.index}]]</th>
+                                                        <td>[[${order.id}]]</td>
+                                                        <td>[[${#dates.format(order.createDate, 'dd-MM-yyyy')}]]</td>
+                                                        <td>[[${order.address}]]</td>
+                                                        <td class="del-goods-col">
+                                                            <a type="button" th:href="@{|/order/detail/${order.id}|}" class="btn btn-light" style="border-radius: 2px solid black; border: 1px solid #cdb3bb;"> <i class="fa fa-search" aria-hidden="true"></i></button>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END SHIPPING ADDRESS -->
+
+                        <!-- BEGIN SHIPPING METHOD -->
+
+                        <!-- END CONFIRM -->
+                    </div>
+                    <!-- END CHECKOUT PAGE -->
+                </div>
+                <!-- END CONTENT -->
+            </div>
+            <!-- END SIDEBAR & CONTENT -->
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/giaodien/layout/layout :: dynamic(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
+            <div class="row margin-bottom-40">
+                <!-- BEGIN SALE PRODUCT -->
+                <div class="col-md-12 sale-product">
+                    <h2>New Arrivals</h2>
+                    <div class="owl-carousel owl-carousel5">
+                        <div th:each="p:${items}">
+                            <div class="product-item">
+                                <div class="pi-img-wrapper">
+                                    <img th:src="@{|/assets/pages/img/products/${p.image}|}" style="width: 300px; height: 250px;" class="img-responsive" alt="Berry Lace Dress">
+
+                                </div>
+                                <h3>
+                                    <a th:href="@{|/index.com/product/detail/${p.id}|}" th:text="${p.name}"></a>
+                                </h3>
+                                <div class="pi-price">$[[${p.price}]]</div>
+                                <a href="javascript:;" class="btn btn-default add2cart" th:attr="ng-click=@{|cart.add(${p.id})|}">Add to cart</a>
+                                <div class="sticker sticker-sale"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END SALE PRODUCT -->
+            </div>
+            <!-- END SALE PRODUCT & NEW ARRIVALS -->
+
+            <!-- BEGIN SIDEBAR & CONTENT -->
+
+
+    </main>
+</body>
+
+</html>

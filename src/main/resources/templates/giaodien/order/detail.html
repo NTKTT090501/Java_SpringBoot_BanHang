@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/giaodien/layout/layout :: dynamic(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main th:object="${order}">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Store</a></li>
+                <li class="active">Checkout</li>
+            </ul>
+            <!-- BEGIN SIDEBAR & CONTENT -->
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <!-- BEGIN CHECKOUT PAGE -->
+                    <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+
+                        <!-- BEGIN CHECKOUT -->
+
+                        <!-- END PAYMENT ADDRESS -->
+
+                        <!-- BEGIN SHIPPING ADDRESS -->
+                        <div id="shipping-address" class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#checkout-page" href="#shipping-address-content" class="accordion-toggle">
+                                      Order information
+                                    </a>
+                                </h2>
+                            </div>
+                            <div id="shipping-address-content">
+                                <div class="panel-body row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="lastname-dd">Order Number:</label>
+                                            <input type="text" id="lastname-dd" class="form-control" th:field="*{id}" readonly>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="firstname-dd">Username: <span class="require">*</span></label>
+                                            <input type="text" id="lastname-dd" class="form-control" th:field="*{account.username}" readonly>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="lastname-dd">Order Date: <span class="require">*</span></label>
+                                            <div type="text" id="lastname-dd" class="form-control" readonly>[[*{#dates.format(createDate, 'dd-MM-yyyy')}]]</div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8">
+                                        <div class="form-group">
+                                            <label for="address1-dd">Address: </label>
+                                            <textarea tabindex="5" th:field="*{address}" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="shipping-address" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#checkout-page" href="#shipping-address-content" class="accordion-toggle">
+                                            Order Lines
+                                    </a>
+                                    </h2>
+                                </div>
+                                <div id="shipping-address-content">
+                                    <div class="panel-body row">
+
+
+                                        <div class="col-md-12 clearfix">
+                                            <div class="table-wrapper-responsive">
+                                                <table>
+                                                    <tr>
+                                                        <th class="goods-page-image">Id</th>
+                                                        <th class="goods-page-description">Name</th>
+                                                        <th class="goods-page-image">Image</th>
+                                                        <th class="goods-page-price">Price</th>
+                                                        <th class="goods-page-quantity">Quantity</th>
+
+                                                        <th class="goods-page-total" colspan="2">Total</th>
+                                                    </tr>
+                                                    <tr th:each="detail: *{orderDetails}" th:object="${detail}">
+                                                        <td class="goods-page-quantity">
+                                                            [[*{product.id}]]
+
+                                                        </td>
+                                                        <td class="goods-page-description">
+                                                            <h3><a href="javascript:;">[[*{product.name}]]</a></h3>
+                                                        </td>
+                                                        <td class="goods-page-image">
+                                                            <a th:href="@{|/product/detail/*{product.id}|}"><img th:src="@{|/assets/pages/img/products/*{product.image}|}" alt="Berry Lace Dress"></a>
+                                                        </td>
+
+                                                        <td class="goods-page-price">
+                                                            <strong>$[[*{#numbers.formatDecimal(price, 0, 'COMMA',2, 'POINT')}]]</strong>
+                                                        </td>
+                                                        <td class="goods-page-quantity" style="font-size: 20px;">
+                                                            [[*{quantity}]]
+                                                        </td>
+
+                                                        <td class="goods-page-total">
+                                                            <strong>$[[*{#numbers.formatDecimal(price*quantity, 0, 'COMMA',2, 'POINT')}]]</strong>
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="checkout-total-price">
+                                                <ul>
+                                                    <li class="shopping-total-price">
+                                                        <em>Total</em>
+                                                        <strong class="price"><span>$</span>{{cart.amount | number : 2}}</strong>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END SHIPPING ADDRESS -->
+
+                            <!-- BEGIN SHIPPING METHOD -->
+
+                            <!-- END CONFIRM -->
+                        </div>
+                        <!-- END CHECKOUT PAGE -->
+                    </div>
+                    <!-- END CONTENT -->
+                </div>
+                <!-- END SIDEBAR & CONTENT -->
+            </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/giaodien/layout/layout :: dynamic(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="main">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="">Store</a></li>
+                    <li class="active">Checkout</li>
+                </ul>
+                <!-- BEGIN SIDEBAR & CONTENT -->
+                <div class="row margin-bottom-40">
+                    <!-- BEGIN CONTENT -->
+                    <div class="col-md-12 col-sm-12">
+                        <h1 style="margin-left:500px;">Login</h1>
+                        <!-- BEGIN CHECKOUT PAGE -->
+                        <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+
+                            <!-- BEGIN CHECKOUT -->
+                            <div id="checkout" class="panel panel-default">
+
+                                <div id="checkout-content">
+                                    <div class="panel-body row">
+
+                                        <div class="col-md-6 col-sm-6" style="margin-left: 300px;">
+                                            <h3>Returning Customer</h3>
+                                            <form role="form" th:action="@{/security/login}" method="post">
+                                                <div class="form-group">
+                                                    <label for="email-login">Username</label>
+                                                    <input type="text" id="email-login" name="username" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password-login">Password</label>
+                                                    <input type="password" name="password" id="password-login" class="form-control">
+                                                </div>
+                                                <div class="form-check">
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        Remember Me?
+                                                    </label>
+                                                    <input class="form-check-input" type="checkbox" name="remember-me" id="flexCheckDefault">
+                                                    <a href="javascript:;" style="float: right;">Forgotten Password?</a>
+                                                </div>
+
+
+                                                <div class="padding-top-20">
+                                                    <div class="mb-3">
+                                                        <i class="" style="color: red; font-weight: 500;" th:text="${message}"></i>
+
+                                                    </div>
+                                                    <button class="btn btn-primary" type="submit">Login</button>
+                                                </div>
+                                                <hr>
+                                                <div class="login-socio">
+                                                    <p class="text-muted">or login using:</p>
+                                                    <ul class="social-icons">
+                                                        <li>
+                                                            <a href="javascript:;" data-original-title="facebook" class="facebook" title="facebook"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" data-original-title="Twitter" class="twitter" title="Twitter"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" data-original-title="Google Plus" class="googleplus" title="Google Plus"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" data-original-title="Linkedin" class="linkedin" title="LinkedIn"></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END CHECKOUT -->
+
+
+                            <!-- END CONFIRM -->
+                        </div>
+                        <!-- END CHECKOUT PAGE -->
+                    </div>
+                    <!-- END CONTENT -->
+                </div>
+                <!-- END SIDEBAR & CONTENT -->
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/giaodien/layout/layout :: dynamic(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Store</a></li>
+                <li class="active">Checkout</li>
+            </ul>
+            <!-- BEGIN SIDEBAR & CONTENT -->
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+
+                    <!-- BEGIN CHECKOUT PAGE -->
+                    <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+
+                        <!-- BEGIN CHECKOUT -->
+
+                        <!-- END PAYMENT ADDRESS -->
+
+                        <!-- BEGIN SHIPPING ADDRESS -->
+                        <div id="shipping-address" class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#checkout-page" href="#shipping-address-content" class="accordion-toggle">
+                                      Order Purcharsing
+                    </a>
+                                </h2>
+                            </div>
+                            <div id="shipping-address-content">
+                                <div class="panel-body row">
+
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="firstname-dd">Username <span class="require">*</span></label>
+                                            <div type="text" id="username" class="form-control" disabled>[[${#request.remoteUser}]]</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address1-dd">Address</label>
+                                            <textarea tabindex="5" ng-model="order.address" class="form-control"></textarea>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="lastname-dd">Order Date <span class="require">*</span></label>
+                                            <div type="text" id="lastname-dd" class="form-control" disabled>{{order.createDate | date: 'dd-MM-yyyy'}}</div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-md-12">
+
+                                        <h1>Shopping Cart</h1>
+                                    </div>
+                                    <div class="col-md-12 clearfix" th:replace="~{/giaodien/cart/shopping-cart :: shopping-cart}">
+
+                                        <div class="clearfix"></div>
+                                        <button class="btn btn-primary pull-right" ng-click="order.purchase()" type="submit" id="button-confirm">Purchase</button>
+                                        <button type="button" class="btn btn-default pull-right margin-right-20">Cancel</button>
+                                    </div>
+                                    <div class="col-md-12 clearfix">
+
+                                        <div class="clearfix"></div>
+                                        <button class="btn btn-primary pull-right" ng-click="order.purchase()" type="submit" id="button-confirm">Purchase</button>
+                                        <button type="button" class="btn btn-default pull-right margin-right-20">Cancel</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END SHIPPING ADDRESS -->
+
+                        <!-- BEGIN SHIPPING METHOD -->
+
+                        <!-- END CONFIRM -->
+                    </div>
+                    <!-- END CHECKOUT PAGE -->
+                </div>
+                <!-- END CONTENT -->
+            </div>
+            <!-- END SIDEBAR & CONTENT -->
+        </div>
+    </main>
+</body>
+
+</html>
